@@ -481,7 +481,7 @@ setInterval(showNextImage, 3000);
         <?php while ($op = $result->fetch_assoc()): ?>
           <div class="col-md-4 mb-4">
             <div class="card h-100 shadow-sm">
-              <img src="<?= htmlspecialchars($op['image_url']) ?>" class="card-img-top" alt="Opportunity Image">
+              <img src="uploads/<?= htmlspecialchars($op['image_url']) ?>" class="card-img-top" alt="Opportunity Image">
               <div class="card-body">
                 <span class="badge bg-primary mb-2"><?= htmlspecialchars($op['type_name']) ?></span>
                 <h5 class="card-title"><?= htmlspecialchars($op['title']) ?></h5>
