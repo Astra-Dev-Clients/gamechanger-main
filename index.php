@@ -425,9 +425,9 @@ setInterval(showNextImage, 3000);
 
         <!-- Course Filter -->
         <div class="col-md-2">
-          <h6>Course</h6>
+          <h6>Course / Title</h6>
           <select class="form-select" name="course">
-            <option value="">All Courses</option>
+            <option value="">All Courses / Titles</option>
             <?php while($row = $courses->fetch_assoc()): ?>
               <option value="<?= htmlspecialchars($row['course']) ?>" 
                 <?= isset($_GET['course']) && $_GET['course'] == $row['course'] ? 'selected' : '' ?>>
