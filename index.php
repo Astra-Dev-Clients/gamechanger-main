@@ -228,7 +228,7 @@ $result = $conn->query($query);
 
       <!-- CTA Button -->
       <div class="d-flex align-items-center mt-3 mt-lg-0">
-        <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold">Book Appointment</a>
+        <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold"><i class="fa-solid fa-calendar-week me-2"></i> Book Appointment</a>
         <!-- <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold">Sign Up</a> -->
       </div>
     </div>
@@ -238,7 +238,7 @@ $result = $conn->query($query);
 <style>
 /* Logo Wrapper */
 .logo-wrapper {
-  background-color: #f7f1e9; /* brand color */
+  background-color: #ff7b003f; /* brand color */
   padding: 6px;
   border-radius: 8px;
   display: flex;
@@ -282,12 +282,12 @@ $result = $conn->query($query);
       <!-- Left Content -->
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold">
-          EXPLORE <span class="text-primary">GLOBAL OPPORTUNITIES</span>
+          EXPLORE <span class="" style="color:#e66b00;">GLOBAL OPPORTUNITIES</span>
         </h1>
-        <p class="lead text-muted mt-3 mb-4">
+        <p class="lead text-muted mt-3 mb-5">
           Start your journey to study, work, and live abroad. Game Changer helps students and professionals unlock international education and career success.
         </p>
-        <a href="#" class="btn btn-orange btn-lg fw-semibold">Apply Now</a>
+        <a href="#" class="btn btn-orange btn-lg fw-semibold">Explore Opportunities <i class="fa-solid fa-circle-chevron-right ms-2"></i></a>
       </div>
 
       <!-- Right Image Slider -->
@@ -595,7 +595,7 @@ setInterval(showNextImage, 3000);
     <!-- CTA -->
     <div class="mt-5">
       <a href="#contact" class="btn btn-orange btn-lg fw-semibold px-4">
-        <i class="fa-solid fa-calendar-check me-2"></i>Book Appointment
+        Book Appointment <i class="fa-solid fa-circle-chevron-right ms-2"></i>
       </a>
     </div>
   </div>

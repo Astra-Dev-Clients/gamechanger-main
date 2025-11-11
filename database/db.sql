@@ -37,11 +37,13 @@ CREATE TABLE opportunities (
   country VARCHAR(100),
   course VARCHAR(100),
   institution VARCHAR(150),
+  co_web TEXT NOT NULL,
   job_title VARCHAR(150),
   industry VARCHAR(100),
   sponsorship ENUM('Sponsored', 'Unsponsored', 'Partially Sponsored'),
   type_id INT, -- FK from opportunity_types
   image_url VARCHAR(255),
+  opp_url text NOT NULL,
   posted_by INT, -- FK from users
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (type_id) REFERENCES opportunity_types(id) ON DELETE SET NULL,

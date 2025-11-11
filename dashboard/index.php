@@ -39,6 +39,43 @@ $user_id = 1;
 </head>
 <body>
 
+<!-- Status Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080;">
+  <?php if(isset($_SESSION['success'])): ?>
+    <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="statusToast">
+      <div class="d-flex">
+        <div class="toast-body">
+          <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  <?php elseif(isset($_SESSION['error'])): ?>
+    <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" id="statusToast">
+      <div class="d-flex">
+        <div class="toast-body">
+          <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  <?php endif; ?>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toastEl = document.getElementById('statusToast');
+    if (toastEl) {
+      const toast = new bootstrap.Toast(toastEl, { delay: 4000 }); // 4 seconds
+      toast.show();
+    }
+  });
+</script>
+
+<!-- end of toast -->
+
+
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
@@ -103,7 +140,9 @@ $user_id = 1;
             data-sponsorship="<?= htmlspecialchars($row['sponsorship']) ?>"
             data-type="<?= htmlspecialchars($row['type_name']) ?>"
             data-institution="<?= htmlspecialchars($row['institution'] ?? '-') ?>"
-            data-image="<?= htmlspecialchars($row['image_url'] ?? '') ?>">
+            data-website="<?= htmlspecialchars($row['co_web'] ?? '') ?>"
+            data-image="<?= htmlspecialchars($row['image_url'] ?? '') ?>"
+            data-link="<?= htmlspecialchars($row['opp_url'] ?? '') ?>">
             <i class="bi bi-eye"></i>
           </button>
 
@@ -115,8 +154,10 @@ $user_id = 1;
             data-sponsorship="<?= htmlspecialchars($row['sponsorship']) ?>"
             data-description="<?= htmlspecialchars($row['description']) ?>"
             data-institution="<?= htmlspecialchars($row['institution'] ?? '') ?>"
+            data-website="<?= htmlspecialchars($row['co_web'] ?? '') ?>"
             data-course="<?= htmlspecialchars($row['course'] ?? '') ?>"
             data-image="<?= htmlspecialchars($row['image_url'] ?? '') ?>"
+            data-url="<?= htmlspecialchars($row['opp_url'] ?? '') ?>"
             data-typeid="<?= $row['type_id'] ?>">
             
             <i class="bi bi-pencil-square"></i>
@@ -177,6 +218,16 @@ $user_id = 1;
         </div>
 
         <div class="col-md-6">
+          <label class="form-label">Website</label>
+          <input type="text" name="web" class="form-control" placeholder="company web link" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Opportunity Url</label>
+          <input type="text" name="opp_url" class="form-control" placeholder="link" required>
+        </div>
+
+        <div class="col-md-6">
           <label class="form-label">Course / Job Title</label>
           <input type="text" name="course" class="form-control" placeholder="e.g. Computer Science or Software Engineer">
         </div>
@@ -215,6 +266,8 @@ $user_id = 1;
         <p><strong>Country:</strong> <span id="viewCountry"></span></p>
         <p><strong>Sponsorship:</strong> <span id="viewSponsorship"></span></p>
         <p><strong>Institution:</strong> <span id="viewInstitution"></span></p>
+        <p><strong>Website </strong> <a id="viewWeb" href="" ></a></p>
+         <p><strong>Oppotunity Link </strong> <a href="" id="viewLink"></a></p>
         <hr>
         <p id="viewDescription"></p>
       </div>
@@ -264,6 +317,14 @@ $user_id = 1;
         <div class="col-md-6">
           <label class="form-label">Institution / Company</label>
           <input type="text" name="institution" id="edit_institution" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Website</label>
+          <input type="text" name="web" id="edit_web" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Opportunity Link</label>
+          <input type="text" name="opp_url" id="edit_link" class="form-control" required>
         </div>
 
         <div class="col-md-6">
@@ -323,6 +384,21 @@ $user_id = 1;
     $('#viewSponsorship').text($(this).data('sponsorship'));
     $('#viewInstitution').text($(this).data('institution'));
     $('#viewDescription').text($(this).data('description'));
+    const website = $(this).data('website');
+    const oppLink = $(this).data('link');
+
+    $('#viewWeb')
+      .text(website)
+      .attr('href', website.startsWith('http') ? website : 'https://' + website)
+      .attr('target', '_blank');
+
+    $('#viewLink')
+      .text(oppLink)
+      .attr('href', oppLink.startsWith('http') ? oppLink : 'https://' + oppLink)
+      .attr('target', '_blank');
+
+
+
 
     const img = $(this).data('image');
     if (img) {
@@ -342,6 +418,21 @@ $('.editBtn').on('click', function() {
   $('#edit_institution').val($(this).data('institution'));
   $('#edit_course').val($(this).data('course'));
   $('#edit_type_id').val($(this).data('typeid'));
+  const website = $(this).data('website');
+  const url = $(this).data('url');
+
+  // Fix: These should update the EDIT modal inputs
+  $('#edit_web').val(website);
+  $('#edit_link').val(url);
+
+  // Optional: Preview current links for convenience
+  if (website) {
+    $('#edit_web').val(website.startsWith('http') ? website : 'https://' + website);
+  }
+  if (url) {
+    $('#edit_link').val(url.startsWith('http') ? url : 'https://' + url);
+  }
+
 
 
   const img = $(this).data('image');

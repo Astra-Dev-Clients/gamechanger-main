@@ -18,8 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = trim($_POST['country']);
     $course = trim($_POST['course'] ?? '');
     $institution = trim($_POST['institution'] ?? '');
+    $web = trim($_POST['web'] ?? '');
     $job_title = trim($_POST['job_title'] ?? '');
     $industry = trim($_POST['industry'] ?? '');
+    $opp_url = trim($_POST['opp_url'] ?? '');
     $sponsorship = $_POST['sponsorship'] ?? 'Unsponsored';
     $type_id = intval($_POST['type_id']);
 
@@ -42,22 +44,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // === Insert into database ===
     $sql = "INSERT INTO opportunities 
-        (title, description, country, course, institution, job_title, industry, sponsorship, type_id, image_url, posted_by) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        (title, description, country, course, institution,co_web, job_title, industry, sponsorship, type_id, image_url,opp_url, posted_by) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "ssssssssssi",
+        "ssssssssssssi",
         $title,
         $description,
         $country,
         $course,
         $institution,
+        $web,
         $job_title,
         $industry,
         $sponsorship,
         $type_id,
         $image_url,
+        $opp_url,
         $user_id
     );
 
