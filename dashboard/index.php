@@ -10,7 +10,7 @@ $user_id = 1;
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Opportunity Management - <?= htmlspecialchars($_SESSION['store_name'] ?? 'Astra Portal'); ?></title>
+  <title>The Game Changer - <?= htmlspecialchars($_SESSION['store_name'] ?? 'Astra Portal'); ?></title>
 
   <!-- Bootstrap & DataTables -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +79,7 @@ $user_id = 1;
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Opportunity Dashboard</a>
+    <a class="navbar-brand fw-bold" href="#">The Game Changer</a>
   </div>
 </nav>
 
@@ -128,9 +128,7 @@ $user_id = 1;
         <td><?= htmlspecialchars($row['sponsorship']) ?></td>
         <td><?= htmlspecialchars($row['created_at']) ?></td>
         <td>
-          <a href="http://localhost/details?id=<?= $row['id'] ?>" class="btn btn-sm btn-success text-white" title="Open Link">
-            <i class="bi bi-link-45deg"></i>
-          </a>
+         
 
           <button class="btn btn-sm btn-secondary viewBtn"
             data-bs-toggle="modal" data-bs-target="#viewModal"
@@ -168,6 +166,13 @@ $user_id = 1;
             data-id="<?= $row['id'] ?>">
             <i class="bi bi-trash"></i>
           </button>
+
+          <a href="poster.php?id=<?= $row['id'] ?>" 
+            class="btn btn-sm btn-success text-white" 
+            title="Open Link">
+            <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+
         </td>
       </tr>
       <?php endwhile; ?>
