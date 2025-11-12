@@ -654,50 +654,52 @@ setInterval(showNextImage, 3000);
     </div>
 
     <div class="row g-4">
-      <!-- Blog Post 1 -->
-      <div class="col-md-4">
-        <div class="card blog-card border-0 shadow-sm h-100">
-          <img src="Assets/images/posts/countries.jpg" class="card-img-top" alt="Blog 1">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Top 5 Countries to Study in 2025</h5>
-            <p class="card-text text-muted">
-              Explore the best destinations offering world-class education, scholarships, and career opportunities for international students.
-            </p>
-            <a href="#" class="btn btn-orange btn-sm">Read More</a>
-          </div>
-        </div>
-      </div>
+      <?php
+      // Fetch latest 3 blog posts
+      $blogQuery = "SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3";
+      $blogs = $conn->query($blogQuery);
 
-      <!-- Blog Post 2 -->
-      <div class="col-md-4">
-        <div class="card blog-card border-0 shadow-sm h-100">
-          <img src="Assets/images/posts/jobs.jpg" class="card-img-top" alt="Blog 2">
-          <div class="card-body">
-            <h5 class="card-title text-primary">Landing a Job Abroad Made Easy</h5>
-            <p class="card-text text-muted">
-              A step-by-step guide to finding and applying for international job opportunities with visa sponsorship.
-            </p>
-            <a href="#" class="btn btn-orange btn-sm">Read More</a>
-          </div>
-        </div>
-      </div>
+      if ($blogs && $blogs->num_rows > 0):
+        while ($blog = $blogs->fetch_assoc()):
+            // Decode Quill Delta JSON
+            $blogData = json_decode($blog['blog_json'], true);
 
-      <!-- Blog Post 3 -->
+            // Extract plain text from 'ops'
+            $excerpt = '';
+            if (!empty($blogData['ops'])) {
+                foreach ($blogData['ops'] as $op) {
+                    if (isset($op['insert'])) {
+                        $excerpt .= strip_tags($op['insert']);
+                    }
+                }
+            }
+            $excerpt = substr($excerpt, 0, 150); // limit to 150 chars
+
+            // Banner
+            $banner = htmlspecialchars($blog['banner'] ?? '');
+      ?>
       <div class="col-md-4">
         <div class="card blog-card border-0 shadow-sm h-100">
-          <img src="Assets/images/posts/english.jpg" class="card-img-top" alt="Blog 3">
+          <?php if ($banner): ?>
+            <img src="./backend/<?= htmlspecialchars($banner) ?>" class="card-img-top" alt="Blog Banner">
+          <?php endif; ?>
           <div class="card-body">
-            <h5 class="card-title text-primary">How to Prepare for IELTS the Smart Way</h5>
-            <p class="card-text text-muted">
-              Discover effective study methods and resources to boost your IELTS score and meet university admission requirements.
-            </p>
-            <a href="#" class="btn btn-orange btn-sm">Read More</a>
+            <h5 class="card-title text-primary"><?= htmlspecialchars($blog['title']) ?></h5>
+            <p class="card-text text-muted"><?= htmlspecialchars($excerpt) ?>...</p>
+            <a href="blog-details.php?id=<?= $blog['id'] ?>" class="btn btn-orange btn-sm">Read More</a>
           </div>
         </div>
       </div>
+      <?php
+        endwhile;
+      else:
+      ?>
+        <p class="text-center text-muted">No blog posts found.</p>
+      <?php endif; ?>
     </div>
   </div>
 </section>
+
 
 
 
