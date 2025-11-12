@@ -55,7 +55,7 @@ body { background-color: var(--aqua-100); display:flex; justify-content:center; 
 .bg-image {
   position: relative;
   height: 65%;
-  border-radius: 115px 0 115px 0;
+  border-radius: 0 0 115px 0;
   background: url('<?= htmlspecialchars($image_url) ?>') center/cover no-repeat;
   padding: 2em;
   color: #fff;
@@ -113,18 +113,82 @@ body { background-color: var(--aqua-100); display:flex; justify-content:center; 
 </head>
 <body>
 
+<!-- Add inside <div class="main">, at the very top -->
+<div class="top-actions" style="position:absolute; top:1em; right:2em; display:flex; gap:0.5em; z-index:10;">
+  <!-- Export Button -->
+  <button onclick="exportPDF()" style="padding:0.5em 1em; background:#ffc107; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer;">
+    <i class="bi bi-download"></i> Export
+  </button>
+
+  <!-- Share Button -->
+  <button onclick="shareOpportunity()" style="padding:0.5em 1em; background:#0d6efd; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer;">
+    <i class="bi bi-share-fill"></i> Share
+  </button>
+</div>
+
+
+<script>
+  // Export as Image
+  function exportImage() {
+    const flyer = document.querySelector('.main');
+    html2canvas(flyer).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'opportunity.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  }
+
+  // Share link
+  function shareOpportunity() {
+    const url = '<?= $qr_link ?>';
+    if (navigator.share) {
+      navigator.share({
+        title: 'Opportunity: <?= htmlspecialchars($op['title']) ?>',
+        text: 'Check out this opportunity!',
+        url: url
+      }).then(() => console.log('Shared successfully'))
+      .catch(err => console.error(err));
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Link copied to clipboard: ' + url);
+      });
+    }
+  }
+</script>
+
+<!-- Replace previous Export & Share buttons -->
+<div class="top-actions" style="position:absolute; top:1em; right:2em; display:flex; gap:0.5em; z-index:10;">
+  <button onclick="exportImage()" style="padding:0.5em 1em; background:#ffc107; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer;">
+    <i class="bi bi-download"></i> Export
+  </button>
+
+  <button onclick="shareOpportunity()" style="padding:0.5em 1em; background:#0d6efd; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer;">
+    <i class="bi bi-share-fill"></i> Share
+  </button>
+</div>
+
+
 <div class="main">
 
   <div class="bg-image">
     <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-        <circle r="13" cx="18" cy="18" stroke="#fff" stroke-width="3" fill="none" />
-        <circle r="8.5" cx="18" cy="18" fill="#fff" />
-      </svg>
-      <p><?= htmlspecialchars($org_name) ?></p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 64 64" fill="none">
+        <!-- Cap top -->
+        <polygon points="32,4 2,20 32,36 62,20" fill="#fff"/>
+        <!-- Cap base -->
+        <rect x="12" y="24" width="40" height="12" fill="#fff"/>
+        <!-- Tassel -->
+        <line x1="32" y1="36" x2="32" y2="48" stroke="#fff" stroke-width="2"/>
+    </svg>
+
+      <p>The Game Changer</p>
     </div>
 
     <div class="strategy">
+     <p><?= htmlspecialchars($org_name) ?></p>
       <h1><span><?= htmlspecialchars($op['title']) ?></span><span><?= htmlspecialchars($op['type_name'] ?? 'Opportunity') ?></span></h1>
       <h3><?= htmlspecialchars($op['country'] ?? '-') ?> | <?= date('Y', strtotime($op['created_at'])) ?></h3>
     </div>
@@ -158,6 +222,11 @@ body { background-color: var(--aqua-100); display:flex; justify-content:center; 
   </div>
 
 </div>
+
+
+
+<!-- Add these scripts in <head> or before closing </body> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
