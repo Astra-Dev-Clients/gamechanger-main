@@ -686,7 +686,7 @@ setInterval(showNextImage, 3000);
           <div class="card-body">
             <h5 class="card-title text-primary"><?= htmlspecialchars($blog['title']) ?></h5>
             <p class="card-text text-muted"><?= htmlspecialchars($excerpt) ?>...</p>
-            <a href="blog-details.php?id=<?= $blog['id'] ?>" class="btn btn-orange btn-sm">Read More</a>
+            <a href="blog_details.php?id=<?= $blog['id'] ?>" class="btn btn-orange btn-sm">Read More</a>
           </div>
         </div>
       </div>
