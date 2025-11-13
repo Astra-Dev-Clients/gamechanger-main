@@ -71,6 +71,9 @@ CREATE TABLE appointments (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE appointments ADD COLUMN preferred_platform ENUM('Phone Call', 'WhatsApp Call', 'Google Meet') AFTER preferred_date;
+
+
 
 
 CREATE TABLE blog_posts (

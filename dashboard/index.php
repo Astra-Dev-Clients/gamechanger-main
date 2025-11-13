@@ -306,7 +306,9 @@ $user_id = 1;
         </div>
         <div class="col-md-6">
           <label class="form-label">Country</label>
-          <input type="text" name="country" class="form-control">
+          <select name="country" id="countrySelect" class="form-select" required>
+            <option value="">Select Country</option>
+          </select>
         </div>
         <div class="col-md-6">
           <label class="form-label">Sponsorship</label>
@@ -548,6 +550,31 @@ $('.editBtn').on('click', function() {
 });
 
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const countrySelect = document.getElementById("countrySelect");
+
+  fetch("../assets/dataset/countries.json")
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json();
+    })
+    .then(data => {
+      data.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.code; // use code as the value
+        option.textContent = item.country; // show country name in dropdown
+        option.setAttribute("data-flag", item.flag); // optional: store flag URL
+        countrySelect.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error("Error loading countries:", error);
+    });
+});
+</script>
+
 
 </body>
 </html>

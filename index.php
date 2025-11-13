@@ -220,7 +220,7 @@ $result = $conn->query($query);
       <ul class="navbar-nav me-4 mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link fw-semibold" href="#">Home</a></li>
         <li class="nav-item"><a class="nav-link fw-semibold" href="#">Services</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Destinations</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="destinations.php">Destinations</a></li>
         <li class="nav-item"><a class="nav-link fw-semibold" href="#">Careers</a></li>
         <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contact us</a></li>
         <li class="nav-item"><a class="nav-link fw-semibold" href="#">Blog</a></li>
@@ -228,7 +228,7 @@ $result = $conn->query($query);
 
       <!-- CTA Button -->
       <div class="d-flex align-items-center mt-3 mt-lg-0">
-        <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold"><i class="fa-solid fa-calendar-week me-2"></i> Book Appointment</a>
+        <a href="appointment.php" class="btn btn-orange btn-signup px-4 py-2 fw-semibold"><i class="fa-solid fa-calendar-week me-2"></i> Book Appointment</a>
         <!-- <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold">Sign Up</a> -->
       </div>
     </div>
@@ -594,7 +594,7 @@ setInterval(showNextImage, 3000);
 
     <!-- CTA -->
     <div class="mt-5">
-      <a href="#contact" class="btn btn-orange btn-lg fw-semibold px-4">
+      <a href="appointment.php" class="btn btn-orange btn-lg fw-semibold px-4">
         Book Appointment <i class="fa-solid fa-circle-chevron-right ms-2"></i>
       </a>
     </div>
