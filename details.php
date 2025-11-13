@@ -26,83 +26,10 @@ $relatedQuery = "SELECT o.*, t.type_name
 $related = $conn->query($relatedQuery);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><?= htmlspecialchars($opportunity['title']) ?> - GameChanger</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f9fbff;
-    }
-    .hero-header {
-      background: linear-gradient(135deg, #072F5F, #FF7A00);
-      color: #fff;
-      padding: 80px 0;
-      text-align: center;
-    }
-    .hero-header h1 { font-weight: 700; }
-    .btn-orange {
-      background-color: #FF7A00;
-      color: #fff;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
-    }
-    .btn-orange:hover { background-color: #e66b00; }
-    .btn-blue {
-      background-color: #072F5F;
-      color: #fff;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
-    }
-    .btn-blue:hover { background-color: #051f3d; }
-    .details-section {
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      margin-top: -60px;
-      position: relative;
-      z-index: 2;
-    }
-    .share-section {
-      margin-top: 50px;
-      text-align: center;
-    }
-    .share-buttons a, .share-buttons button {
-      margin: 5px;
-      border-radius: 25px;
-      padding: 10px 18px;
-      color: white;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .share-facebook { background-color: #1877F2; }
-    .share-whatsapp { background-color: #25D366; }
-    .share-copy { background-color: #555; border: none; }
-    .related-section {
-      margin-top: 80px;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    }
-  </style>
-</head>
-<body>
 
-<!-- Navbar -->
-<?php include('./includes/navbar.php'); ?>
+
+<!-- header -->
+<?php include('./includes/header.php'); ?>
 
 <!-- Hero Header -->
 <section class="hero-header">

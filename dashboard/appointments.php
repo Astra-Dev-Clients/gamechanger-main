@@ -15,19 +15,13 @@ require '../database/db.php';
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-  <style>
-    body { background-color: #f8f9fa; }
-    .btn-primary { background-color: #143D60; border: none; }
-    .navbar { background-color: #143D60; }
-  </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">The Game Changer</a>
-  </div>
-</nav>
+
+<?php include('./includes/navbar.php'); ?>
+
+
 
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">

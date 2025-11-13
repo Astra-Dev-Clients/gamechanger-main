@@ -44,11 +44,9 @@ $user_id = $_SESSION['user_id'] ?? 1;
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">Blog Dashboard</a>
-  </div>
-</nav>
+<?php include('./includes/navbar.php'); ?>
+
+
 
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">

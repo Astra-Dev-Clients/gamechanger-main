@@ -222,6 +222,9 @@ body {
 </head>
 <body>
 
+
+
+
 <!-- Export & Share Buttons -->
 <div class="top-actions" style="position:absolute; top:1em; right:2em; display:flex; gap:0.5em; z-index:10;">
   <button onclick="exportImage()" style="padding:0.5em 1em; background:#ffc107; border:none; border-radius:8px; color:#fff; font-weight:600; cursor:pointer;">

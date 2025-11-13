@@ -38,242 +38,7 @@ $result = $conn->query($query);
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Changer Study and Work Abroad Consulting</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fc;
-    }
-
-    .logo-box {
-      background-color: #072F5F;
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 4px;
-      margin-right: 4px;
-    }
-
-    .nav-link {
-      color: #072F5F !important;
-    }
-
-    .nav-link:hover {
-      color: #FF7A00 !important;
-    }
-
-    .btn-orange {
-      background-color: #FF7A00;
-      color: #fff;
-      border: none;
-      transition: 0.3s;
-    }
-
-    .btn-orange:hover {
-      background-color: #e66b00;
-    }
-
-    .hero-section {
-      background-color: #fff;
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero-section h1 {
-      color: #072F5F;
-    }
-
-    .text-primary {
-      color: #072F5F !important;
-    }
-
-    .btn-lg {
-      padding: 0.75rem 2rem;
-      border-radius: 30px;
-    }
-
-    footer {
-      background-color: #fff;
-      border-top: 1px solid #e5e5e5;
-      padding: 30px 0;
-      text-align: center;
-    }
-
-    /* Filter Section Styles */
-    .filter-section {
-      background-color: #fff;
-      padding: 30px 0;
-      border-bottom: 2px solid #e5e5e5;
-    }
-
-    .filter-section .form-check-label {
-      font-size: 14px;
-    }
-
-    .filter-cards {
-      margin-top: 30px;
-      padding-bottom: 60px;
-    }
-
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-body {
-      padding: 20px;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #072F5F;
-    }
-
-    .card-text {
-      font-size: 14px;
-      color: #555;
-    }
-
-    .filter-section h5 {
-      color: #072F5F;
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .hero-section h1 {
-        font-size: 2rem;
-      }
-    }
-
-
-    .filter-section {
-  background-color: #fff;
-  padding: 40px 0;
-  border-bottom: 2px solid #e5e5e5;
-}
-
-.filter-section h5 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #072F5F;
-  margin-bottom: 10px;
-}
-
-.form-select {
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  padding: 10px;
-  transition: 0.3s;
-}
-
-.form-select:focus {
-  border-color: #FF7A00;
-  box-shadow: 0 0 0 0.2rem rgba(255, 122, 0, 0.25);
-}
-
-
-
-  </style>
-</head>
-<body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
-  <div class="container">
-    <!-- Logo -->
-<a class="navbar-brand d-flex align-items-center fw-bold text-uppercase" href="#">
-  <div class="logo-wrapper d-flex align-items-center justify-content-center me-2">
-    <img src="Assets/images/brand/log.png" alt="Logo" class="img-fluid">
-  </div>
-  <div class="brand-text d-flex flex-column justify-content-center">
-    <span class="text-primary fs-5">GameChanger</span>
-    <small class="text-muted fw-normal" style="font-size: 0.7rem;">Study & work abroad</small>
-  </div>
-</a>
-
-
-    <!-- Mobile Toggle -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Nav Links -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav me-4 mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Services</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="destinations.php">Destinations</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Careers</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contact us</a></li>
-        <li class="nav-item"><a class="nav-link fw-semibold" href="#">Blog</a></li>
-      </ul>
-
-      <!-- CTA Button -->
-      <div class="d-flex align-items-center mt-3 mt-lg-0">
-        <a href="appointment.php" class="btn btn-orange btn-signup px-4 py-2 fw-semibold"><i class="fa-solid fa-calendar-week me-2"></i> Book Appointment</a>
-        <!-- <a href="#" class="btn btn-orange btn-signup px-4 py-2 fw-semibold">Sign Up</a> -->
-      </div>
-    </div>
-  </div>
-</nav>
-
-<style>
-/* Logo Wrapper */
-.logo-wrapper {
-  background-color: #ff7b003f; /* brand color */
-  padding: 6px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-wrapper img {
-  max-height: 50px;
-  width: auto;
-}
-
-/* Navbar Links */
-.navbar-nav .nav-link {
-  color: #072F5F !important;
-  margin: 0 8px;
-  transition: 0.3s;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #FF7A00 !important;
-}
-
-/* Signup Button */
-.btn-signup {
-  border-radius: 30px;
-  transition: 0.3s;
-}
-
-.btn-signup:hover {
-  background-color: #e66b00;
-  color: #fff;
-}
-</style>
-
+<?php include('./includes/header.php'); ?>
 
   <!-- Hero Section -->
 <section class="hero-section py-5">
@@ -801,8 +566,6 @@ setInterval(showNextImage, 3000);
 
 
 
-
-
 <section class="testimonials-section py-5" id="testimonials">
   <div class="container text-center">
     <h2 class="fw-bold mb-4">
@@ -919,19 +682,77 @@ setInterval(showNextImage, 3000);
 
 
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p class="mb-0 text-muted">© 2025 GameChanger Consulting LTD | All Rights Reserved</p>
+<!-- ======= Frequently Asked Questions Section ======= -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-primary">Frequently Asked Questions</h2>
+      <p class="text-muted">Find answers to the most common questions about our services and process.</p>
     </div>
-  </footer>
+
+    <div class="accordion" id="faqAccordion">
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1Heading">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+            How do I book an appointment?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1Heading" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            You can book an appointment by filling out the appointment form on our website and selecting your preferred date, time, and platform. Our team will contact you to confirm.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2Heading">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+            Which services do you provide?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            We provide assistance with university applications, visa guidance, career counseling, and consultation for studying and working abroad.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3Heading">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+            Can I reschedule or cancel my appointment?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Yes, you can reschedule or cancel your appointment by contacting our support team via email or phone at least 24 hours in advance.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq4Heading">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+            Do you charge for initial consultation?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Our initial consultation is free. Fees may apply for specialized services such as visa application processing and university application guidance.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End FAQ Section -->
 
 
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+<?php include('./includes/footer.php'); ?>
+
+
+

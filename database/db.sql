@@ -13,6 +13,7 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE users ADD COLUMN profile_photo VARCHAR(255) DEFAULT NULL;
 
 -- ===========================
 -- 2️⃣ OPPORTUNITY TYPES
@@ -76,6 +77,18 @@ ALTER TABLE appointments
 ADD COLUMN preferred_datetime DATETIME NULL;
 
 
+
+-- Create table to store testimonials
+CREATE TABLE testimonials (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    role VARCHAR(100),
+    country VARCHAR(100),
+    message TEXT NOT NULL,
+    image_url VARCHAR(255) DEFAULT 'Assets/images/illustrations/user.png',
+    rating DECIMAL(2,1) CHECK (rating >= 0 AND rating <= 5),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 
 
