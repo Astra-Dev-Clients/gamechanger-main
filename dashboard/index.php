@@ -137,7 +137,7 @@ $user_id = 1;
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="sell.php">
+          <a class="nav-link text-white" href="appointments.php">
             <span class="nav-icon-wrapper"><i class="bi bi-ticket nav-icon"></i></span> Appointments
           </a>
         </li>

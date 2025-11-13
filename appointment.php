@@ -9,14 +9,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $service_type = $_POST['service_type'];
-    $preferred_date = $_POST['preferred_date'];
+    $preferred_datetime = $_POST['preferred_datetime']; // datetime-local value
     $preferred_platform = $_POST['preferred_platform'];
-    $message = trim($_POST['message']);
+    $message = trim($_POST['message']); // notes
 
-    if ($full_name && $email && $service_type && $preferred_date && $preferred_platform) {
-        $stmt = $conn->prepare("INSERT INTO appointments (full_name, email, phone, service_type, preferred_date, preferred_platform, message) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $full_name, $email, $phone, $service_type, $preferred_date, $preferred_platform, $message);
+if ($full_name && $email && $service_type && $preferred_datetime && $preferred_platform) {
+    $stmt = $conn->prepare("
+        INSERT INTO appointments 
+        (full_name, email, phone, service_type, preferred_datetime, preferred_platform, message) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ");
+    $stmt->bind_param("sssssss", $full_name, $email, $phone, $service_type, $preferred_datetime, $preferred_platform, $message);
 
+    
         if ($stmt->execute()) {
             $success = "Your appointment request has been submitted successfully!";
         } else {
@@ -102,9 +107,10 @@ label { font-weight: 500; }
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Preferred Date *</label>
-              <input type="date" name="preferred_date" class="form-control" required>
+            <label class="form-label">Preferred Date & Time *</label>
+            <input type="datetime-local" name="preferred_datetime" class="form-control" required>
             </div>
+
 
             <div class="col-md-6">
               <label class="form-label">Preferred Platform *</label>

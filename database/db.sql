@@ -66,12 +66,15 @@ CREATE TABLE appointments (
     'Consultation'
   ) NOT NULL,
   preferred_date DATE,
+  preferred_platform ENUM('Phone Call', 'WhatsApp Call', 'Google Meet'),
   message TEXT,
   status ENUM('Pending', 'Confirmed', 'Completed', 'Cancelled') DEFAULT 'Pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-ALTER TABLE appointments ADD COLUMN preferred_platform ENUM('Phone Call', 'WhatsApp Call', 'Google Meet') AFTER preferred_date;
+ALTER TABLE appointments
+ADD COLUMN preferred_datetime DATETIME NULL;
+
 
 
 
