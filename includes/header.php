@@ -15,7 +15,7 @@
       background-color: #f8f9fc;
     }
 
-    .logo-box {
+   .logo-box {
       background-color: #072F5F;
       color: #fff;
       padding: 4px 10px;
@@ -154,7 +154,7 @@
     <!-- Logo -->
 <a class="navbar-brand d-flex align-items-center fw-bold text-uppercase" href="#">
   <div class="logo-wrapper d-flex align-items-center justify-content-center me-2">
-    <img src="Assets/images/brand/log.png" alt="Logo" class="img-fluid">
+    <img src="Assets/images/brand/logo.png" alt="Logo" class="img-fluid">
   </div>
   <div class="brand-text d-flex flex-column justify-content-center">
     <span class="text-primary fs-5">GameChanger</span>
@@ -192,7 +192,7 @@
 <style>
 /* Logo Wrapper */
 .logo-wrapper {
-  background-color: #ff7b003f; /* brand color */
+  /* background-color: #ff7b003f; brand color */
   padding: 6px;
   border-radius: 8px;
   display: flex;
@@ -201,7 +201,7 @@
 }
 
 .logo-wrapper img {
-  max-height: 50px;
+  max-height: 60px;
   width: auto;
 }
 

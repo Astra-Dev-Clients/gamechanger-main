@@ -110,7 +110,7 @@ $related = $conn->query($relatedQuery);
   </div>
 </section>
 
-<!-- ======= Footer Section ======= -->
+
 <!-- ======= Footer Section ======= -->
 <footer class="pt-5 bg-dark text-light mt-5">
   <div class="container">

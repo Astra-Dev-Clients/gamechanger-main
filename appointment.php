@@ -117,8 +117,7 @@ if ($full_name && $email && $service_type && $preferred_datetime && $preferred_p
     </div>
   </div>
 </section>
-
-
+ 
 
 <!-- header -->
 <?php include('./includes/footer.php'); ?>
